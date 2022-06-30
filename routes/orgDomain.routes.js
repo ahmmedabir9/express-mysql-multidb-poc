@@ -7,6 +7,6 @@ const {
 const router = Router();
 
 router.post("/add-org-domain", createOrgDomain);
-router.get("/get-all-org-domain", getAllOrgDomain);
+router.get("/get-all-org-domains", getAllOrgDomain);
 
 module.exports = router;

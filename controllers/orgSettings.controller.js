@@ -1,6 +1,7 @@
 const db = require("../models");
 const { response } = require("../utils/response");
 const { StatusCodes } = require("http-status-codes");
+const { OrgDomain } = require("../models");
 const OrgSettings = db.OrgSettings;
 
 const createOrgSettings = async (req, res) => {
@@ -36,7 +37,14 @@ const createOrgSettings = async (req, res) => {
 
 const getAllOrgSettings = async (req, res) => {
   try {
-    const orgSettings = await OrgSettings.findAll({});
+    const orgSettings = await OrgSettings.findAll({
+      include: [
+        {
+          model: OrgDomain,
+          as: "orgDomains",
+        },
+      ],
+    });
 
     if (!orgSettings || orgSettings?.length === 0) {
       return response(res, StatusCodes.NOT_FOUND, false, null, "NO ORG Found");

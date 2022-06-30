@@ -36,4 +36,12 @@ db.sequelize.sync({ force: false }).then(() => {
   console.log("SYNC DONE");
 });
 
+//relation
+
+db.OrgSettings.hasMany(db.OrgDomain, { foreignKey: "orgId", as: "orgDomains" });
+db.OrgDomain.belongsTo(db.OrgSettings, {
+  foreignKey: "orgId",
+  as: "orgSetting",
+});
+
 module.exports = db;
