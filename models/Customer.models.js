@@ -1,14 +1,17 @@
 module.exports = (sequelize, DataTypes) => {
-  const OrgDomain = sequelize.define(
-    "org_domain",
+  const Customer = sequelize.define(
+    "customer",
     {
-      orgId: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      domain: {
+      email: {
         type: DataTypes.STRING,
         allowNull: false,
+      },
+      phone: {
+        type: DataTypes.STRING,
       },
     },
     {
@@ -16,5 +19,5 @@ module.exports = (sequelize, DataTypes) => {
     }
   );
 
-  return OrgDomain;
+  return Customer;
 };
