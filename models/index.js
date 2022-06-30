@@ -30,6 +30,7 @@ db.Sequelize = Sequelize;
 db.sequelize = sequelize;
 
 db.OrgSettings = require("./OrgSettings.models.js")(sequelize, DataTypes);
+db.OrgDomain = require("./OrgDomain.models.js")(sequelize, DataTypes);
 
 db.sequelize.sync({ force: false }).then(() => {
   console.log("SYNC DONE");
